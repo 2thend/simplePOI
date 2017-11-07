@@ -3,6 +3,8 @@ package com.thend.master.controller;
 import com.thend.master.plugin.exporter.BaseSheetBuilder;
 import com.thend.master.plugin.exporter.ExportExcelUtils;
 import com.thend.master.plugin.exporter.ISheetBuilder;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -14,17 +16,22 @@ import java.util.*;
  * 测试controller
  * @author thend
  */
+@Controller
 public class TestController {
 
-
+    @RequestMapping(value = "/")
+    public String index() {
+        return "index";
+    }
 
     @RequestMapping(value = "/simpleExport", method = RequestMethod.GET)
     public void simpleExport(HttpServletResponse response) {
         Map<String, Object> exportData = buildExportData();
         List<String> titleList = (List<String>)exportData.get("titleList");
         List<List<String>> dataList = (List<List<String>>)exportData.get("dataList");
+        //单Sheet文件导出 通用
         String exportFileName = exportData.get("exportFileName").toString();
-        ExportExcelUtils.export(exportFileName, "sheetTest", titleList, dataList, null, response);
+        ExportExcelUtils.export(exportFileName, "sheet测试", titleList, dataList, null, response);
     }
 
     @RequestMapping(value = "/customExport", method = RequestMethod.GET)
@@ -33,20 +40,22 @@ public class TestController {
         List<String> titleList = (List<String>)exportData.get("titleList");
         List<List<String>> dataList = (List<List<String>>)exportData.get("dataList");
         String exportFileName = exportData.get("exportFileName").toString();
-        ISheetBuilder builder = new BaseSheetBuilder("sheetTest", titleList, dataList);
+        //单Sheet文件导出 定制
+        ISheetBuilder builder = new BaseSheetBuilder("sheet测试", titleList, dataList);
         ExportExcelUtils.export(exportFileName, builder, response);
     }
 
     @RequestMapping(value = "/multiExport", method = RequestMethod.GET)
     public void multiExport(HttpServletResponse response) {
         Map<String, Object> exportData = buildExportData();
-        List<ISheetBuilder> builderList = new ArrayList<>();
         List<String> titleList = (List<String>)exportData.get("titleList");
         List<List<String>> dataList = (List<List<String>>)exportData.get("dataList");
         String exportFileName = exportData.get("exportFileName").toString();
-        ISheetBuilder builder1 = new BaseSheetBuilder("sheetTest1", titleList, dataList);
-        ISheetBuilder builder2 = new BaseSheetBuilder("sheetTest2", titleList, dataList);
-        ISheetBuilder builder3 = new BaseSheetBuilder("sheetTest3", titleList, dataList);
+        ISheetBuilder builder1 = new BaseSheetBuilder("sheet测试1", titleList, dataList);
+        ISheetBuilder builder2 = new BaseSheetBuilder("sheet测试2", titleList, dataList);
+        ISheetBuilder builder3 = new BaseSheetBuilder("sheet测试3", titleList, dataList);
+        //多Sheet文件导出 定制
+        List<ISheetBuilder> builderList = new ArrayList<>();
         builderList.add(builder1);
         builderList.add(builder2);
         builderList.add(builder3);
@@ -73,7 +82,7 @@ public class TestController {
             dataList.add(temps);
         }
         String now = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date());
-        String exportFileName = "export_" + now + ".xlsx";
+        String exportFileName = "export测试_" + now + ".xlsx";
 //        String exportFileName = "export_" + now;
         exportData.put("titleList", titleList);
         exportData.put("dataList", dataList);

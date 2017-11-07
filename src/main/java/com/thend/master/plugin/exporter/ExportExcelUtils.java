@@ -39,15 +39,15 @@ public class ExportExcelUtils {
      * @param response
      */
     public static <T extends Iterable, K extends Iterable> void export(String exportFile, String sheetName, Collection<String> titles, Collection<T> datas, Collection<K> footDatas, HttpServletResponse response){
-        ISheetBuilder sheetBuilder = new BaseSheetBuilder(sheetName).buildTitle(titles).buildData(datas);
-        if(footDatas != null){
-            sheetBuilder.buildFoot(footDatas);
-        }
+        ISheetBuilder sheetBuilder = new BaseSheetBuilder(sheetName).buildTitle(titles).buildData(datas).buildFoot(footDatas);
         //导出excel文件
         outputExcel(exportFile, response);
     }
     public static <T extends Iterable, K extends Iterable> void export(String exportFile, String sheetName, Collection<String> titles, Collection<T> datas, Collection<K> footDatas){
         export(exportFile, sheetName, titles, datas, footDatas, null);
+    }
+    public static <T extends Iterable, K extends Iterable> void export(String exportFile, String sheetName, Collection<String> titles, Collection<T> datas){
+        export(exportFile, sheetName, titles, datas, null, null);
     }
 
     /**
