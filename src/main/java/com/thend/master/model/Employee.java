@@ -19,7 +19,7 @@ public class Employee{
     /**
      * 员工编号
      */
-	private String empOcde;
+	private String empCode;
     /**
      * 手机号
      */
@@ -58,12 +58,12 @@ public class Employee{
 		this.empName = empName;
 	}
 
-	public String getEmpOcde() {
-		return empOcde;
+	public String getEmpCode() {
+		return empCode;
 	}
 
-	public void setEmpOcde(String empOcde) {
-		this.empOcde = empOcde;
+	public void setEmpCode(String empCode) {
+		this.empCode = empCode;
 	}
 
 	public String getMobile() {
