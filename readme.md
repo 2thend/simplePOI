@@ -34,3 +34,10 @@
 ##### 3、ISheetBuilder实现类有类似Jquery的链式调用
 ##### 4、单sheet定制使用装饰者模式，避免类的继承
 ##### 5、线程安全
+
+###### 项目github地址：git@github.com:2thend/simplePOI.git
+
+>##### 联系方式
+###### QQ：504707335
+
+###### 本人最近在找工作，求推荐
