@@ -7,6 +7,8 @@
 ###### ExportInfo：导出Excel数据实体
 
 ##### 自定义扩展实现参考类
+###### com.thend.master.exporter.CustomSheetBuilder
+###### 使用装饰者模式，继承ISheetBuilder，内部持有BaseSheetBuilder引用
 
 ##### 项目启动 MyApplication.main
 ##### 项目访问 http://localhost:8080
@@ -21,9 +23,14 @@
 
 ##### 3、单sheet定制使用装饰者模式，避免类的继承
 
+##### 4、线程安全
+###### 全局的workbook在ExportExcelUtils内部使用ThreadLocal维护
+###### Sheet定制的相关信息通过ISheetBuilder实现类的构造函数，以实例化的方式将信息以ExportInfo对象的形式存放在ISheetBuilder实现类中
+###### ExportExcelUtils(workbook)与ISheetBuilder实现类(Sheet)的数据通过ISheetBuilder接口中getExportInfo方法进行数据通信
+
 #### 三、simplePOI 项目特色
 ##### 1、简单易用
 ##### 2、面向ISheetBuilder接口编程
 ##### 3、ISheetBuilder实现类有类似Jquery的链式调用
 ##### 4、单sheet定制使用装饰者模式，避免类的继承
-
+##### 5、线程安全
