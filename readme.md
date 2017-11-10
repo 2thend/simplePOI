@@ -35,6 +35,8 @@
 ##### 4、单sheet定制使用装饰者模式，避免类的继承
 ##### 5、线程安全
 
-###### 项目github地址：git@github.com:2thend/simplePOI.git
+>##### 项目地址：
+###### github: git@github.com:2thend/simplePOI.git
+###### 码云：https://gitee.com/ktshws/simplePOI.git
 
 >##### 欢迎加入QQ群(Think In Code)：464258941
