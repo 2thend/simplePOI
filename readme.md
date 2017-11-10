@@ -37,7 +37,4 @@
 
 ###### 项目github地址：git@github.com:2thend/simplePOI.git
 
->##### 联系方式
-###### QQ：504707335
-
-###### 本人最近在找工作，求推荐
+>##### 欢迎加入QQ群(Think In Code)：464258941
