@@ -38,5 +38,3 @@
 >##### 项目地址：
 ###### github: https://github.com/2thend/simplePOI
 ###### 码云：https://gitee.com/ktshws/simplePOI.git
-
->##### 欢迎加入QQ群(Think In Code)：464258941
