@@ -70,6 +70,7 @@ public class BaseSheetBuilder implements ISheetBuilder {
                 Iterator colIterator = colList.iterator();
                 while(colIterator.hasNext()){
                     Object rowData = colIterator.next();
+                    rowData = rowData == null ? "" : rowData;
                     Cell cell = row.createCell(colIndex);
                     cell.setCellStyle(buildDataStyle());
                     cell.setCellValue(rowData.toString());
