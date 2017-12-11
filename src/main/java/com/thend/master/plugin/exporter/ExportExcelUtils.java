@@ -113,8 +113,11 @@ public class ExportExcelUtils {
             e.printStackTrace();
         } finally {
             try {
+                localWorkbook.get().close();
+                localWorkbook.set(null);
                 ouputStream.close();
             } catch (IOException e) {
+                localWorkbook.set(null);
                 e.printStackTrace();
             }
         }
